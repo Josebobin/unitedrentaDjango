@@ -1,0 +1,163 @@
+{%extends 'base.html' %} {%load static%} {%block content%}
+
+<!-- banner  -->
+
+<div class="container-fluid p-0">
+  {%for img in banners %}
+  <img class="d-block w-100" src="{{img.imageURL}}" alt="First slide" />
+  {%endfor%}
+</div>
+<!-- Page Content -->
+<div class="container pb-5">
+  <div class="page-header">
+    {%for img in banners %}
+    <h1>{{img.title}}</h1>
+    {%endfor%}
+  </div>
+
+  {%if message_name %}
+  <div>
+    Thanks{{message_name}} !!
+    <p>We received your mail</p>
+  </div>
+  {%else%}
+  <div class="row">
+    <div class="col-md-4 message">
+      {%for img in banners %}
+      <h5>
+        {{img.message_heading}}
+      </h5>
+      <p>
+        {{img.description}}
+      </p>
+      {%endfor%}
+    </div>
+    <div class="col-md-8">
+      <form method="POST" action="{% url 'contact'%}" class="was-validated">
+        {%csrf_token%}
+        <div class="form-group">
+          <label for="uname">Your Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="uname"
+            placeholder="Enter your name"
+            name="message-name"
+            required
+          />
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="uname">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter email"
+            name="message-email"
+            required
+          />
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="uname">Your Phone number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="message-mobile"
+            placeholder="Enter mobile"
+            name="message-mobile"
+            required
+          />
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="sub">Your Subject</label>
+          <input
+            type="text"
+            class="form-control"
+            id="sub"
+            placeholder="Enter Subject"
+            name="message-subject"
+            required
+          />
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+          <label for="message">message</label>
+
+          <textarea
+            name="message"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            placeholder="Enter message"
+            rows="3"
+            required
+          ></textarea>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="remember"
+              required
+            />
+            I agree on blabla.
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Check this checkbox to continue.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!--Google map-->
+
+  <!--Google Maps-->
+  {%endif%}
+</div>
+<div class="message_section p-5">
+  <div class="d-flex mt-6 container">
+    <div class="p-2">
+      <i class="fa fa-envelope fa-5x" aria-hidden="true"></i>
+    </div>
+    <div class="pl-5 pt-3">
+      Have any questions? <br />
+      {%for product in contacts %} {{product.contact }} {%endfor%}
+    </div>
+    <div class="p-2 ml-auto">
+      <i class="fa fa-3x fa-phone" aria-hidden="true"></i>
+    </div>
+    <div class="pl-5 pt-3">
+      Call us
+      <br />
+      {%for product in contacts %} {{product.phone}} {%endfor%}
+    </div>
+  </div>
+</div>
+
+<div id="map-container-google-1" class="z-depth-1-half map-container">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13913.460958429392!2d47.94943!3d29.33029!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4aae0af97740d9fd!2sGulf%20Bank!5e0!3m2!1sen!2skw!4v1592998117273!5m2!1sen!2skw"
+    width="600"
+    height="450"
+    frameborder="0"
+    style="border: 0;"
+    allowfullscreen=""
+    aria-hidden="false"
+    tabindex="0"
+  ></iframe>
+</div>
+{%endblock content%}

@@ -1,0 +1,86 @@
+<nav class="navbar-right">
+  <ul id="mainMenu">
+    <h6>Product Category & Type</h6>
+
+    <div class="dropdown">
+      <a href="{%url 'constructions'%}"><span>Construction Equipment</span></a>
+      <div class="dropdown-content">
+        <a href="#">DOZER </a>
+        <a href="#">BACKHOE LOADER</a>
+        <a href="#">EXCAVATOR</a>
+        <a href="#">SKID STEER</a>
+        <a href="#">WHEEL LOADER</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="{%url 'lifting'%}"><span>Lifting Equipment</span></a>
+      <div class="dropdown-content">
+        <a href="#">BOOM TRUCK</a>
+        <a href="#">CRANE</a>
+        <a href="#">FORK LIFT</a>
+        <a href="#">MANLIFT</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="{%url 'onroad'%}"><span>On Road Equipment</span></a>
+      <div class="dropdown-content">
+        <a href="#">HOOK LOADER </a>
+        <a href="#"> FLAT BED</a>
+        <a href="#">DUMP TRUCK</a>
+      </div>
+    </div>
+  </ul>
+</nav>
+
+<style>
+  #mainMenu {
+    background-color: #fff !important;
+    -webkit-box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.15);
+    padding: 20px 10px;
+
+    display: flex;
+    flex-direction: column;
+  }
+  #mainMenu li {
+    display: block;
+
+    margin-left: 2px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #mainMenu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #fff;
+    color: #dd3333;
+  }
+
+  #mainMenu a:hover {
+    background-color: #dd3333;
+    color: #fff;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    right: 0;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+</style>

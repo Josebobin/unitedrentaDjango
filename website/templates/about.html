@@ -1,0 +1,59 @@
+{%extends 'base.html' %} {%load static%} {%block content%}
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item">
+      {%for post in banners%}<img
+        class="d-block w-100"
+        src="{{post.imageURL}}"
+        alt="First slide"
+      />
+      {%endfor%}
+    </div>
+  </div>
+</div>
+<!-- Sidebar  -->
+
+<div class="container-fluid p-0">
+  {%for post in banners%}<img
+    class="d-block w-100"
+    src="{{post.imageURL}}"
+    alt="First slide"
+  />
+  {%endfor%}
+</div>
+
+<!-- Page Content  -->
+
+<!--breadcump-->
+<nav class="breadcrumb_bg">
+  <ol class="breadcrumb container">
+    <li
+      class="breadcrumb-item {% if request.resolver_match.url_name == 'home' %} active {% endif %}"
+    >
+      <a href="{%url 'home'%}">Home</a>
+    </li>
+    <li
+      class="breadcrumb-item {% if request.resolver_match.url_name == 'about' %} active {% endif %}"
+      aria-current="page"
+    >
+      <a href="{%url 'about'%}">About Us</a>
+    </li>
+  </ol>
+</nav>
+<!--end breadcump-->
+
+<!--content container-->
+<div class="container mb-5">
+  <div class="page-header">
+    {%for post in banners%}
+    <h1>{{post.title}}</h1>
+    {%endfor%}
+  </div>
+
+  {%for post in posts%}
+  <p>
+    {{post.description|safe}}
+  </p>
+  {{post.imageURL}} {%endfor%}
+</div>
+{%endblock content%}

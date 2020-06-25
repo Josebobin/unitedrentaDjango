@@ -1,0 +1,104 @@
+{%load static%}
+<nav id="nav" class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
+  <a class="navbar-brand" href=""
+    ><img
+      id="logo"
+      class="img-fluid pt-3 logo"
+      src="{% static 'images/logo-1.png' %}"
+      alt=""
+      srcset=""
+  /></a>
+  <button
+    class="navbar-toggler collapsed"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse pt-5" id="navbarsExampleDefault">
+    <ul class="navbar-nav">
+      <li
+        class="nav-item {% if request.resolver_match.url_name == 'home' %} active {% endif %}"
+      >
+        <a class="nav-link" href="{%url 'home'%}">Home</a>
+      </li>
+      <div class="dropdown">
+        <li
+          class="btn btn-default dropdown-toggle"
+          data-toggle="dropdown"
+          type="button"
+        >
+          <a href="{%url 'services' %}"> Services</a>
+          <span class="caret"></span>
+        </li>
+        <ul class="dropdown-menu">
+          <li
+            class="dropdown-submenu dropdown-item {% if request.resolver_match.url_name == 'equipments' %} active {% endif %}"
+          >
+            <a class="test nav-link" tabindex="-1" href="{%url 'equipments'%}"
+              >Equpments <span class="caret"></span
+            ></a>
+            <ul class="dropdown-menu">
+              <li
+                class="dropdown-item {% if request.resolver_match.url_name == 'constructions' %} active {% endif %}"
+              >
+                <a class="nav-link" tabindex="-1" href="{%url 'constructions'%}"
+                  >Construction Equipment</a
+                >
+              </li>
+              <li
+                class="dropdown-item {% if request.resolver_match.url_name == 'lifting' %} active {% endif %}"
+              >
+                <a class="nav-link" tabindex="-1" href="{%url 'lifting'%}"
+                  >Lifting Equipment</a
+                >
+              </li>
+              <li
+                class="nav-item dropdown-item {% if request.resolver_match.url_name == 'onroad' %} active {% endif %}"
+              >
+                <a class="nav-link" tabindex="-1" href="{%url 'onroad'%}">
+                  On Road Equipment</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li
+            class="nav-item dropdown-item {% if request.resolver_match.url_name == 'transport' %} active {% endif %}"
+          >
+            <a class="nav-link" tabindex="-1" href="{%url 'transport'%}"
+              >Transport</a
+            >
+          </li>
+        </ul>
+      </div>
+      <li
+        class="nav-item {% if request.resolver_match.url_name == 'enquiry' %} active {% endif %}"
+      >
+        <a class="nav-link" href="{%url 'enquiry' %}">Enquiry </a>
+      </li>
+
+      <li
+        class="nav-item {% if request.resolver_match.url_name == 'about' %} active {% endif %}"
+      >
+        <a class="nav-link" href="{%url 'about' %}">About</a>
+      </li>
+
+      <li
+        class="nav-item {% if request.resolver_match.url_name == 'contact' %} active {% endif %}"
+      >
+        <a class="nav-link" href="{%url 'contact' %}">Contact</a>
+      </li>
+
+      <!-- Split dropright button -->
+
+      <!---->
+
+      <!--end-->
+    </ul>
+  </div>
+</nav>

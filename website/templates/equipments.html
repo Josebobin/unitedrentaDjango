@@ -1,0 +1,100 @@
+{%extends 'base.html' %} {%load static%} {%block content%}
+
+<!-- banner  -->
+
+<div class="container-fluid p-0">
+  {%for img in ebanner%}
+  <img class="d-block w-100" src="{{img.imageURL}}" alt="First slide" />
+
+  {%endfor%}
+  <!--breadcumb-->
+
+  <!--breadcump-->
+  <nav class="breadcrumb_bg">
+    <ol class="breadcrumb container">
+      <li
+        class="breadcrumb-item {% if request.resolver_match.url_name == 'home' %} active {% endif %}"
+      >
+        <a href="{%url 'home'%}">Home</a>
+      </li>
+
+      <li
+        class="breadcrumb-item {% if request.resolver_match.url_name == 'services' %} active {% endif %}"
+        aria-current="page"
+      >
+        <a href="{%url 'services'%}">Services</a>
+      </li>
+
+      <li
+        class="breadcrumb-item {% if request.resolver_match.url_name == 'equipments' %} active {% endif %}"
+        aria-current="page"
+      >
+        <a href="{%url 'equipments'%}">Equipments</a>
+      </li>
+    </ol>
+  </nav>
+  <!--end breadcump-->
+
+  <div class="container pb-5">
+    <div class="page-header">
+      {%for title in ebanner%}
+      <h1>{{title.title |default_if_none:""}}</h1>
+      {%endfor%}
+    </div>
+
+    <div class="row">
+      {%for products in equipments %}
+      <div class="col-md-3 mr-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="image_icon">
+            <a
+              href="{{products.imageURL}}"
+              data-toggle="lightbox"
+              data-gallery="example-gallery"
+              class="iconbtn fas fa-search-plus"
+            ></a>
+            <a
+              href="#"
+              data-toggle="popover"
+              data-content="{{products.price_description}}"
+              data-placement="top"
+              {%
+              if
+              products
+              %}
+              title="{{products.price|floatformat:2 }} "
+              class="iconbtn fas fa-dollar-sign"
+            ></a>
+
+            <a
+              href="#"
+              data-toggle="popover"
+              data-content="{{products.info}}"
+              data-placement="top"
+              title=" "
+              class="iconbtn fas fa-info"
+            ></a>
+          </div>
+          <a
+            href="{{products.imageURL}}"
+            data-toggle="lightbox"
+            data-gallery="example-gallery"
+          >
+            <img
+              src="{{products.imageURL}}"
+              class="img-fluid animate__animated animate__pulse"
+            />
+          </a>
+          <div class="card-body">
+            <h4 class="card-text animate__animated animate__bounceInUp">
+              <a href="{{products.link}}">{{products.title}}</a>
+            </h4>
+          </div>
+        </div>
+      </div>
+      {%endfor%} {%include 'sidenav.html'%}
+    </div>
+  </div>
+
+  {%endblock content%}
+</div>
